@@ -1,4 +1,41 @@
 
+```
+安装后台服务
+java -Dlog4j2.formatMsgNoLookups=true  -Xmx8g -jar /root/zjenergy/EasyMedia-1.3.1.jar &
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLV 播放器</title>
+    <script src="https://cdn.jsdelivr.net/npm/flv.js@1.5.0/dist/flv.min.js"></script>
+</head>
+<body>
+
+    <h1>使用 FLV.js 播放 RTSP 转 FLV 流</h1>
+    <video id="videoElement" width="640" height="360" controls></video>
+
+    <script>
+        var videoElement = document.getElementById('videoElement');
+        if (flvjs.isSupported()) {
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: 'http://10.202.28.39:8866/live?url=rtsp://admin:Gwjt5616@172.16.22.64:554/Streaming/Channels/101&&&autoClose=false&&&ffmpeg=true'  // 使用 FFmpeg 转码后的 FLV 地址
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+        } else {
+            console.error('浏览器不支持 FLV.js');
+        }
+    </script>
+
+</body>
+</html>
+```
+
+
 # EasyMedia
 
 #### 介绍
